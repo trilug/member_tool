@@ -1,0 +1,6 @@
+AuthName "TriLUG Steering Committee"
+AuthType Basic
+AuthUserFile /var/www/steering.trilug.org/.htuser
+AuthGroupFile /var/www/steering.trilug.org/.htgroup
+require group member_tool
+

@@ -1,0 +1,311 @@
+
+	
+Manual
+
+This manual describes how to install, configure, and customize set of PHP
+scripts for the purpose of maintaining the TriLUG membership list. This
+document is designed to be printed and not necessarily read online.
+
+
+Contents
+
+  1. Introduction 
+  2. Installation 
+  3. Configuration 
+  4. Customization 
+  5. Commands 
+  6. Future developments 
+  7. Appendix A: Database structure 
+  8. Appendix B: Credits 
+
+
+Introduction
+
+TriLUG is an acronym for Triangle Linux User Group, a not-for profit
+corporation created for sharing information about the Linux operating
+system. In order to best serve its members, TriLUG desires to maintain a
+list of its membership. This manual describes a set of PHP scripts, run
+through an HTTP server, designed for this purpose. The scripts assume the
+existence of a MySQL database backend. It is also assumes that files named
+index.php will automatically be executed by the HTTP server when no files
+are specified in a URL. This text does not describe how to install MySQL
+nor configure your HTTP server since these topics are beyond the scope of
+this document.
+
+
+Installation
+
+The scripts were distributed in a single .tar.gz file. Uncompress and untar
+the file with gunzip and tar, respectively. The result should be the
+creation of a directory (trilug) containing a bunch o' files. Copy or move
+the directory to a location where your HTTP server can find it. At this
+point you may want to re-configure your HTTP server to provide a bit of
+access control against the scripts as well as make sure index.php files are
+executed by default when no file names are specified in a URL.
+
+The next step is to create the database to hold your data. To do this you
+will first want to decide what you want to call your database, what user
+name will have access to it, and what password the user name will use for
+authentication. Once you have decided these things, use the mysqladmin
+utility to create the database with a command looking something like this:
+
+  mysqladmin -uroot -p create trilug_membership 
+
+Next you will need to provide access to the database. There are probably
+many ways to do this, but I always use the MySQL client as root and issue
+this sort of SQL statement:
+
+  mysql -uroot -p mysql
+  mysql> GRANT SELECT, INSERT, UPDATE, DELETE, CREATE
+         ON trilug_membership.*
+         TO nobody@localhost
+         IDENTIFIED BY 'secret_password';
+  mysql> \q
+
+Finally, you need to give the database some structure. In the distribution
+is a file named trilug_membership.sql containing the structure. Redirect
+this file to the MySQL client:
+
+  mysql -uroot -p trilug_membership < trilug_membership.sql 
+
+You should now be able to use the MySQL client to connect to the database
+and view its structure with simple EXPLAIN statements. If you can do this,
+then installation is complete.
+
+
+Configuration
+
+Once the database has been created and the scripts have been installed, you
+need to configure the scripts to allow access to the database, as well as a
+couple of other things. This is done by editing the system's index.php
+file, specifically, you must edit the values of the following variables:
+
+  $gDatabase 
+    The name of the database where the membership data is saved 
+
+  $gUsername 
+    A username allowed to access the database 
+
+  $gPassword 
+    The password of username above 
+
+  $gHome 
+    The fully qualified root URL pointing to these scripts 
+
+  $gDate 
+    The date the scripts were last updated 
+
+  $gContactName 
+    The name of person who supports these scripts 
+
+  $gContactEmail 
+    The email address of the person above 
+
+After these variables have been defined no other configuration should be
+necessary. You will now probably want to customize the system's
+look-and-feel, and that process is described in the next section.
+
+
+Customization
+
+This system is made up .php files and .inc files. In general, the .php
+files include only PHP code and a tiny bit of HTML, and the .inc files
+contain mostly HTML with a smiggin of PHP. Put another way, most
+customization is done by editing the .inc files. Here is a list of the .inc
+files:
+
+  add.inc 
+    This file contains the HTML form used for adding new members to
+    the database. 
+
+  confirm.inc 
+    Before records are deleted, users are asked to confirm the
+    decision to delete. The confirmation message is located in this
+    file. 
+
+  delete.inc 
+    The output of the delete operation is contained here. 
+
+  displayall.inc 
+    This text is used to display abbreviated records listing all
+    records in the database. 
+
+  displayone.inc 
+    This file displays all the information about a given member
+    with options for editing or deleting. 
+
+  edit.inc 
+    The HTML form for editing records is contained in this file 
+
+  error.inc 
+    When an error occurs, a variable is set, this file is "included"
+    in the system, and processing is stopped. This file presents the
+    error message in a user-friendly fashion. 
+
+  footer.inc 
+    This is the HTML displayed at the end of all output. It is
+    intended to contain the end BODY, the end HTML tag, and the
+    contact information defined in the Configuration section. 
+
+  header.inc 
+    This is the HTML displayed at the beginning of all output. It is
+    intended to contain any HEAD elements and the opening BODY tag. 
+
+  home.inc 
+    Enter into this file the content of the system's home page. 
+
+  manual.inc 
+    Here is the manual itself. You can edit it to correct my
+    spellin' errors. 
+
+  results.inc 
+    The results of searches are displayed in this file. It is intended
+    to look a lot like the content in displayall.inc. 
+
+  search.inc 
+    All information systems must be browsable and searchable. This
+    include file contains the HTML allowing the user to create a simple
+    SQL query against database. 
+
+The .inc files you will most likely want to edit are home.inc, header.inc,
+and footer.inc. Home.inc is the system's introductory page and intended to
+describe the scope of the system. Header.inc is the place where you can
+define the system's style information and/or remove the menu options from
+its initial side bar. The footer is intended to contain contact information
+in case the system goes bonkers and users want some technical support.
+
+Here is a list of all the .php files: 
+
+  add.php
+    This file is used to add a new member to the database.
+
+  delete.php
+    This file undoes the work of add.php; it removes records from
+    the database.
+
+  displayall.php
+    Here is the code used to find all members and display a list
+    of them.
+
+  displayone.php
+    This file is used to display a single record of a member in detail.
+
+  edit.php
+    This file allows you to edit records in the database.
+
+  index.php
+    This is a simple main sort of file and only is used to include
+    other files.
+
+  search.php
+    This file allows you to do very simple searches against the database.
+
+You must edit index.php in order for the system to work. This process was
+described in the Configuration section above. You might want to edit
+add.php to reduce the number of field requiring input. If you edit add.php,
+then you will want to edit edit.php to jive with your changes.
+
+
+Commands
+
+The whole system is run by issuing one of seven commands specified in the
+URL. Each command is defined as such by preceeding it with a HTTP GET
+request prefixed with ?cmd=. For example, to display this manual, you would
+send the system a URL looking something like this:
+
+  [path to membership directory]/?cmd=manual 
+
+Here is a list of all the commands: 
+
+  add
+    Used to display the form to add a member record.
+
+  displayall
+    Used to list all records in the database.
+
+  displayone
+    Used to display the record associated with a record number.
+
+  delete
+    Used delete a record.
+
+  edit
+    Used update the database.
+
+  search
+    Used to create a simple search against the database and
+    display the results.
+
+  manual
+    Used to display this text.
+
+If no command is supplied in the URL, then the contents of home.inc are
+displayed.
+
+You may want to put relative URLs containing the add, displayall, search,
+and manual commands in your header.inc file so these functions are always
+available to your users. The other commands get automatically called by
+these command (with the exception of the manual command).
+
+
+Future developments
+
+Software is never done. It always seems to suffer from "creeping
+featuritis". The set of scripts is no exception. In fact, this system has
+been delivered knowing that a few things are missing. For example, TriLUG
+members ought to be able to edit their own records, and of course, not edit
+anybody else's. Consequently, there needs to be incorporated into the
+system more authentication and access control. Not everybody is just member
+of TriLUG; some members are also officers. These people need their records
+to reflect this fact. This membership database is flat, not relational.
+While this is not a problem now, it may become one later when more data is
+entered about each person.
+
+With these things in mind, these scripts will need upgrading and most
+likely some maintenance.
+
+
+Appendix A: Database structure
+
+The database contains only one table with the following structure: 
+
+  CREATE TABLE member_list (
+     member_id bigint(20) unsigned NOT NULL,
+     first_name varchar(30) NOT NULL,
+     last_name varchar(30) NOT NULL,
+     email varchar(254) NOT NULL,
+     occupation varchar(30) NOT NULL,
+     employer varchar(30) NOT NULL,
+     birth_year int(4) NOT NULL,
+     city varchar(30) NOT NULL,
+     member_password varchar(30) DEFAULT 'password' NOT NULL,
+     member_group varchar(30) DEFAULT 'member' NOT NULL,
+     address_1 varchar(255) NOT NULL,
+     address_2 varchar(255) NOT NULL,
+     state char(2) DEFAULT 'NC' NOT NULL,
+     zip_code varchar(10) NOT NULL,
+     telephone varchar(15) NOT NULL,
+     PRIMARY KEY (member_id),
+     KEY member_id (member_id),
+     UNIQUE member_id_2 (member_id)
+  );
+
+
+Appendix B: Credits
+
+These scripts were written by: 
+
+  Eric Lease Morgan
+  Infomotions, Inc.
+  219 Hawthorne Road
+  Raleigh, NC 27605-1634
+
+  919/833-1366
+  eric_morgan@infomotions.com
+  http://www.infomotions.com/
+
+  December 7, 2000 (Pearl Harbor Day) 
+
+But they would not have been written without the support and guidance of
+Kevin "The Alchemist" Sonney. "Thank you for the opportunity."
+
