@@ -2,7 +2,7 @@
 #
 # Host: localhost    Database: trilug
 #--------------------------------------------------------
-# Server version	3.22.32
+# Server version     3.22.32
 
 #
 # Table structure for table 'member_list'
