@@ -2,12 +2,12 @@
 <head>
 <title>TriLUG membership list</title>
 <style type="text/css">
-	body {background-color: #ffffff;}
-	div.c4 {text-align: center}
-	a.c3 {font-family: arial, helvetica, sans-serif; font-size: 80%}
-	td.c2 {font-family: arial, helvetica, sans-serif; font-size: 80%}
-	span.c1 {font-family: arial, helvetica, sans-serif; font-size: 80%}
-	code {font-family: monospace; }
+    body {background-color: #ffffff;}
+    div.c4 {text-align: center}
+    a.c3 {font-family: arial, helvetica, sans-serif; font-size: 80%}
+    td.c2 {font-family: arial, helvetica, sans-serif; font-size: 80%}
+    span.c1 {font-family: arial, helvetica, sans-serif; font-size: 80%}
+    code {font-family: monospace; }
 </style>
 </head>
 <body>

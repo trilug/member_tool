@@ -20,7 +20,7 @@
 </tr>
 
 <tr>
-<td align=right>Last name<font color=red>*</font>:</td> 
+<td align=right>Last name<font color=red>*</font>:</td>
 <td><input name=last_name value="<?php echo $r["last_name"]?>"></td>
 </tr>
 
