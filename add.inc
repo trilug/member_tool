@@ -56,7 +56,7 @@
 </tr>
 
 <tr>
-<td align=right>Telephone<font color=red>*</font>:</td>
+<td align=right>Telephone<!-- font color=red>*</font -->:</td>
 <td><input name=telephone></td>
 </tr>
 
