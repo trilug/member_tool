@@ -59,7 +59,7 @@
 </tr>
 
 <tr>
-<td align=right>Telephone<font color=red>*</font>:</td>
+<td align=right>Telephone<!-- font color=red>*</font -->:</td>
 <td><input name=telephone value="<?php echo $r["telephone"]?>"></td>
 </tr>
 
@@ -73,17 +73,17 @@
 </tr>
 
 <tr>
-<td align=right>Occupation<font color=red>*</font>:</td>
+<td align=right>Occupation<!-- font color=red>*</font -->:</td>
 <td><input name=occupation value="<?php echo $r["occupation"]?>"></td>
 </tr>
 
 <tr>
-<td align=right>Employer<font color=red>*</font>:</td>
+<td align=right>Employer<!-- font color=red>*</font -->:</td>
 <td><input name=employer value="<?php echo $r["employer"]?>"></td>
 </tr>
 
 <tr>
-<td align=right>Year of birth<font color=red>*</font>:</td>
+<td align=right>Year of birth<!-- font color=red>*</font -->:</td>
 <td><input name=birth_year value="<?php echo $r["birth_year"]?>"></td>
 </tr>
 
