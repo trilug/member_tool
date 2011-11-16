@@ -5,31 +5,13 @@
     # Copyright (c) 2000 Eric Lease Morgan  <eric_morgan@infomotions.com>
     # Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl-3.0.html)
 
-    # 08/09/10 - make "telephone" field optional,
-    #          - formatting (tabs/spaces, CR/LF),
-    #          - store source code in a local 'git' repository.
-
-    # 04/05/09 - Restored to newly-built server (pilot).
-
-    # 05/05/06 - changed header.inc to add spacing between commands
-    # so we don't accidentally email the whole membership (again)
-
-    # 05/02/02 - fixes for the new php - KES
-    # 12/07/00 - finished first pass at documentation
-    # 10/27/00 - changed member_id to the date
-    # 10/28/00 - added postal address information,
-    #            changed age to year of birth, and started a manual
-    # 10/22/00 - added edit, delete, and search
-    # 10/21/00 - first investigations
-
-
-    # define sum constants
+    # define some constants
     $gDbHost       = "localhost";
     $gDatabase     = "membership";
     $gUsername     = "membership-www";
     $gPassword     = "foobarbaz";
     $gHome         = "http://www.trilug.org/";
-    $gDate         = "April 5, 2009";
+    $gDate         = "2011/11/15";
     $gContactName  = "Member Tool Maintainers";
     $gContactEmail = "member-tool@trilug.org";
 

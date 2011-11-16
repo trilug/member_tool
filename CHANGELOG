@@ -1,0 +1,41 @@
+CHANGELOG (major changes, see git log for details)
+
+2010-08-09  Alan Porter  <porter@trilug.org>
+
+	* make "telephone" field optional,
+	* formatting (tabs/spaces, CR/LF),
+	* store source code in a local 'git' repository.
+
+2009-04-05  Alan Porter  <porter@trilug.org>
+
+	* Restored to newly-built server (pilot).
+
+2006-05-05  Alan Porter  <porter@trilug.org>
+
+	* changed header.inc to add spacing between commands
+	so we don't accidentally email the whole membership (again)
+
+2002-05-02  KES (Kevin Sonney?)
+
+	* fixes for the new php
+
+2000-12-07  Eric Lease Morgan  <eric_morgan@infomotions.com>
+
+	* finished first pass at documentation
+
+2000-10-28  Eric Lease Morgan  <eric_morgan@infomotions.com>
+
+	* added postal address information,
+    * changed age to year of birth, and started a manual
+
+2000-10-27  Eric Lease Morgan  <eric_morgan@infomotions.com>
+
+    * 10/27/00 * changed member_id to the date
+
+2000-10-22  Eric Lease Morgan  <eric_morgan@infomotions.com>
+
+	* added edit, delete, and search
+
+2000-10-21  Eric Lease Morgan  <eric_morgan@infomotions.com>
+
+	* first investigations
