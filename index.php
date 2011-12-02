@@ -1,9 +1,9 @@
 <?php
 
-       # index.php - a trilug membership list
-       
-       # Eric Lease Morgan (eric_morgan@infomotions.com)
-       # http://www.infomotions.com
+    # index.php - a trilug membership list
+
+    # Copyright (c) 2000 Eric Lease Morgan  <eric_morgan@infomotions.com>
+    # Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl-3.0.html)
 
     # 04/05/09 - Restored to newly-built server (pilot).
 
