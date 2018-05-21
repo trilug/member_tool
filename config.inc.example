@@ -1,0 +1,10 @@
+<?php
+    $gDbHost       = "localhost";
+    $gDatabase     = "membership";
+    $gUsername     = "membership-www";
+    $gPassword     = "";
+    $gHome         = "http://www.trilug.org/";
+    $gDate         = "";
+    $gContactName  = "";
+    $gContactEmail = "";
+?>

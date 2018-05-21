@@ -5,15 +5,8 @@
     # Copyright (c) 2000 Eric Lease Morgan  <eric_morgan@infomotions.com>
     # Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl-3.0.html)
 
-    # define some constants
-    $gDbHost       = "localhost";
-    $gDatabase     = "membership";
-    $gUsername     = "membership-www";
-    $gPassword     = "foobarbaz";
-    $gHome         = "http://www.trilug.org/";
-    $gDate         = "2011/11/15";
-    $gContactName  = "Member Tool Maintainers";
-    $gContactEmail = "member-tool@trilug.org";
+    # Include non-version-controlled configuration file
+    include("config.inc");
 
     # let's get started; no editing should be necessary below this line
 
