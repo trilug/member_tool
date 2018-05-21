@@ -12,10 +12,8 @@
     include("php4-1-1_varfix.php");
 
     # open a connection to the database server
-    $db_conn = mysql_connect("$gDbHost","$gUsername","$gPassword") or
-      die("Cound not open database : ".mysql_error());
-    $the_db = mysql_select_db("$gDatabase",$db_conn) or
-      die("Mysql Error : ".mysql_error());
+    $db_conn = mysqli_connect("$gDbHost","$gUsername","$gPassword","$gDatabase") or
+      die("Cound not open database : ".mysqli_error());
     # display the header
     include "header.inc";
 
@@ -63,6 +61,6 @@
     include "footer.inc";
 
     # close the database connection
-    mysql_close($db_conn);
+    mysqli_close($db_conn);
 
 ?>

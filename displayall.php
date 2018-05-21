@@ -13,12 +13,12 @@
     $sql = "SELECT *
             FROM member_list
             ORDER BY last_name, first_name";
-    $rows = mysql_query ($sql) or die("Error getting rows:".mysql_error());
+    $rows = mysqli_query ($db_conn, $sql) or die("Error getting rows:".mysqli_error());
 
     # list each member
-    echo "<!-- got ".mysql_num_rows($rows)." -->";
+    echo "<!-- got ".mysqli_num_rows($rows)." -->";
     echo "<ol>";
-    while ($r = mysql_fetch_array($rows)) {
+    while ($r = mysqli_fetch_array($rows)) {
 
         include "./displayall.inc";
 
