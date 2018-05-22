@@ -1,3 +1,8 @@
+<?php
+# Copyright (c) 2000 Eric Lease Morgan  <eric_morgan@infomotions.com>
+# Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl-3.0.html)
+?>
+
 <h1>Add a member</h1>
 
 <?php
