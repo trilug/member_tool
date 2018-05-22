@@ -19,6 +19,7 @@
     # display the header
     include "header.inc";
 
+    $cmd = $_GET["cmd"];
     echo "<!-- the command is : $cmd  -->\n";
     # process the command
     if (! $cmd) {
