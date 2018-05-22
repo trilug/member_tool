@@ -1,5 +1,4 @@
 <?php
-
     # index.php - a trilug membership list
 
     # Copyright (c) 2000 Eric Lease Morgan  <eric_morgan@infomotions.com>
@@ -23,78 +22,40 @@
     echo "<!-- the command is : $cmd  -->\n";
     # process the command
     if (! $cmd) {
-
         # display the home page
         include "./home.inc";
-
     }
-
-    # new member record
     elseif ($cmd == "add") {
-
         include "add.php";
-
     }
-
-    # display all members
     elseif ($cmd == "displayall") {
-
         include "./displayall.php";
-
     }
-
-    # display a member
     elseif ($cmd == "displayone") {
-
         include "displayone.php";
-
     }
-
-    # delete record
     elseif ($cmd == "delete") {
-
         include "delete.php";
-
     }
-
-    # edit record
     elseif ($cmd == "edit") {
-
         include "edit.php";
-
     }
-
-    # search
     elseif ($cmd == "search") {
-
         include "search.php";
-
     }
-
-    # email all
     elseif ($cmd == "emailall") {
         include "emailall.php";
     }
-
-    # email
     elseif ($cmd == "email") {
         include "email.php";
     }
-
-    # manual
     elseif ($cmd == "manual") {
-
         include "manual.inc";
-
     }
-
-    # unknown command
     else {
-
         # error
         $error = "Unknown value for cmd ($cmd).";
         include "error.inc";
-
     }
 
     # display the footer
