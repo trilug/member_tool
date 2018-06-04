@@ -23,6 +23,7 @@ CREATE TABLE member_list (
   state char(2) DEFAULT 'NC' NOT NULL,
   zip_code varchar(10) DEFAULT '' NOT NULL,
   telephone varchar(15) DEFAULT '' NOT NULL,
+  id_equals_date char(1) DEFAULT 'Y',
   PRIMARY KEY (member_id),
   KEY member_id (member_id),
   UNIQUE member_id_2 (member_id)

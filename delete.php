@@ -1,33 +1,39 @@
 <?php
-# Copyright (c) 2000 Eric Lease Morgan  <eric_morgan@infomotions.com>
-# Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl-3.0.html)
+// Copyright (c) 2000 Eric Lease Morgan  <eric_morgan@infomotions.com>
+// Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl-3.0.html)
 
-    if (! $id) {
+// Updated 2018-06-01 by BDMcC
 
-        # error
-        $error = "This function requires an ID for input.";
-        include "./error.inc";
 
-    }
 
-    elseif (! $confirm) {
+if (!$id) {
 
-        # confirm
-        include "./confirm.inc";
+    // error
+    $error = "This function requires an ID for input.";
+    include "./error.inc";
 
-    }
+} elseif (!$confirm) {
 
-    else {
+    // confirm
+    include "./confirm.inc";
 
-        # create and sql query and execute it
-        $sql = "DELETE
+} else {
+
+    // create and sql query and execute it
+    $sql = "DELETE
                 FROM member_list
-                WHERE member_id = $id";
-        mysql_db_query ($gDatabase, $sql);
-
-        # done
-        include "delete.inc";
-
+                WHERE member_id = :id";
+    try {
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(array(':id' => $id));
+    } catch (PDOException $pe) {
+        echo "Delete SQL Error: " . $pe->getMessage();
+        die();
     }
+    $pdo->exec($sql);
 
-?>
+    // done
+    include "delete.inc";
+
+}
+

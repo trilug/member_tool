@@ -71,7 +71,7 @@
 <tr>
 <td align=right>Member Since:</td>
 <td><?php
-if ($r["id_equals_date"] == 'Y') {
+if ($r["id_equals_date"] === 'Y') {
   echo date("l, F j, Y",$r["member_id"]);
 } else {
   echo "before December 7, 2000";
